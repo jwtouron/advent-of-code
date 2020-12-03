@@ -1,23 +1,31 @@
 module Main where
 
+import Data.Maybe
 import System.Environment
 
-import qualified Day1
-import qualified Day2
-import qualified Day3
+import Day1
+import Day2
+import Day3
+
+data Type = Test | Solve deriving (Eq, Show)
+
+data Args =
+  Args Type Int deriving (Eq, Show)
+
+commands :: [(Args, IO ())]
+commands =
+  [ (Args Test 1, Day1.test)
+  , (Args Solve 1,  Day1.solve)
+  , (Args Test 2, Day2.test)
+  , (Args Solve 2, Day2.solve)
+  , (Args Test 3, Day3.test)
+  , (Args Solve 3, Day3.solve)
+  ]
 
 main :: IO ()
 main = do
   args <- getArgs
-  let (doTest, day) = if head args == "-t"
-                      then (True, read $ args !! 1)
-                      else (False, read $ head args)
-
-  case (doTest, day) of
-    (True, 1) -> Day1.test
-    (False, 1) -> Day1.solve
-    (True, 2) -> Day2.test
-    (False, 2) -> Day2.solve
-    (True, 3) -> Day3.test
-    (False, 3) -> Day3.solve
-    _ -> error "Unknown day"
+  let args' = if head args == "-t"
+              then Args Test (read $ args !! 1)
+              else Args Solve (read $ head args)
+  fromJust $ lookup args' commands
