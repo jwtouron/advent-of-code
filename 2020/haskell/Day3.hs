@@ -1,6 +1,5 @@
 module Day3 (test, solve) where
 
-import Control.Monad (when)
 import Data.Array (Array)
 import qualified Data.Array as Array
 import AoCUtils
@@ -51,13 +50,13 @@ part1 :: Array (Int, Int) Char -> Int
 part1 arr = countTrees arr 3 1
 
 part2 :: Array (Int, Int) Char -> Int
-part2 arr = product [c1, c2, c3, c4, c5]
- where
-  c1 = countTrees arr 1 1
-  c2 = countTrees arr 3 1
-  c3 = countTrees arr 5 1
-  c4 = countTrees arr 7 1
-  c5 = countTrees arr 1 2
+part2 arr =
+  product [ countTrees arr 1 1
+          , countTrees arr 3 1
+          , countTrees arr 5 1
+          , countTrees arr 7 1
+          , countTrees arr 1 2
+          ]
 
 test :: IO ()
 test = do
