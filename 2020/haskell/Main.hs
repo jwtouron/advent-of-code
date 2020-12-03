@@ -4,6 +4,7 @@ import System.Environment
 
 import qualified Day1
 import qualified Day2
+import qualified Day3
 
 main :: IO ()
 main = do
@@ -17,4 +18,6 @@ main = do
     (False, 1) -> Day1.solve
     (True, 2) -> Day2.test
     (False, 2) -> Day2.solve
+    (True, 3) -> Day3.test
+    (False, 3) -> Day3.solve
     _ -> error "Unknown day"
