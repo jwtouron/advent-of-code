@@ -3,6 +3,7 @@ module Day2 (test, solve) where
 import Control.Monad (when)
 import Data.List.Split (splitOn)
 import Data.Monoid (Sum(..))
+import AoCUtils
 
 data Policy =
   Policy { num1 :: Int
@@ -50,13 +51,11 @@ part2 lines = getSum $ foldMap f lines
 
 test :: IO ()
 test = do
-  part1' <- fmap part1 input
-  part2' <- fmap part2 input
-  when (part1' /= 460)
-       (error "part1 is not 460")
-  when (part2' /= 251)
-       (error "part2 is not 251")
-
+  input' <- input
+  mkTest [ mkTestCase "part1 input" 460 (part1 input')
+         , mkTestCase "part2 input" 251 (part2 input')
+         ]
+-- test
 solve :: IO ()
 solve = do
   input' <- input

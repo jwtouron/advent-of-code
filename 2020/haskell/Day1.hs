@@ -1,5 +1,7 @@
 module Day1 (solve, test) where
 
+import AoCUtils
+
 input :: IO [Int]
 input = map read . lines <$> readFile "input/day1.txt"
 
@@ -14,7 +16,11 @@ part2 input = head [x * y * z| x <- input, y <- input, z <- input, x + y + z == 
 -- => 193416912
 
 test :: IO ()
-test = undefined
+test = do
+  input' <- input
+  mkTest [ mkTestCase "part1 input" 41979 (part1 input')
+         , mkTestCase "part2 input" 193416912 (part2 input')
+         ]
 
 solve :: IO ()
 solve = do
