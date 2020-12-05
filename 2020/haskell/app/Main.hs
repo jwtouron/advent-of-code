@@ -3,29 +3,29 @@ module Main where
 import Data.Maybe
 import System.Environment
 
-import Day1
-import Day2
-import Day3
+import qualified Day1
+import qualified Day2
+import qualified Day3
+import qualified Day4
 
 data Type = Test | Solve deriving (Eq, Show)
 
-data Args =
-  Args Type Int deriving (Eq, Show)
-
-commands :: [(Args, IO ())]
+commands :: [((Type, Int), IO ())]
 commands =
-  [ (Args Test 1, Day1.test)
-  , (Args Solve 1,  Day1.solve)
-  , (Args Test 2, Day2.test)
-  , (Args Solve 2, Day2.solve)
-  , (Args Test 3, Day3.test)
-  , (Args Solve 3, Day3.solve)
+  [ ((Test, 1), Day1.test)
+  , ((Solve, 1),  Day1.solve)
+  , ((Test, 2), Day2.test)
+  , ((Solve, 2), Day2.solve)
+  , ((Test, 3), Day3.test)
+  , ((Solve, 3), Day3.solve)
+  , ((Test, 4), Day4.test)
+  , ((Solve, 4), Day4.solve)
   ]
 
 main :: IO ()
 main = do
   args <- getArgs
   let args' = if head args == "-t"
-              then Args Test (read $ args !! 1)
-              else Args Solve (read $ head args)
+              then (Test, (read $ args !! 1))
+              else (Solve, (read $ head args))
   fromJust $ lookup args' commands
