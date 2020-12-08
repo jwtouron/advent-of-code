@@ -27,6 +27,7 @@ dependencies:
 - regex-tdfa >= 1.3 && < 1.4
 - unordered-containers >= 0.2 && < 0.3
 - regex-applicative >= 0.3 && < 0.4
+- mtl >= 2.2 && < 2.3
 
 library:
   source-dirs: src

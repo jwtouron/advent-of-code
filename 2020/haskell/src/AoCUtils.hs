@@ -1,4 +1,8 @@
-module AoCUtils (mkTestCase, mkTest) where
+module AoCUtils
+  ( ifM
+  , mkTest
+  , mkTestCase
+  ) where
 
 import Control.Monad (when)
 
@@ -11,3 +15,6 @@ mkTest :: [IO ()] -> IO ()
 mkTest testCases = do
   mapM_ id testCases
   putStrLn "All tests passed."
+
+ifM :: Monad m => m Bool -> m a -> m a -> m a
+ifM p t f = p >>= \b -> if b then t else f
