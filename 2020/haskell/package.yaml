@@ -28,6 +28,7 @@ dependencies:
 - unordered-containers >= 0.2 && < 0.3
 - regex-applicative >= 0.3 && < 0.4
 - mtl >= 2.2 && < 2.3
+- vector >= 0.12 && < 0.13
 
 library:
   source-dirs: src
