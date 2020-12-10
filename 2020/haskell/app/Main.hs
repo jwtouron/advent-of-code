@@ -12,6 +12,7 @@ import qualified Day6
 import qualified Day7
 import qualified Day8
 import qualified Day9
+import qualified Day10
 
 data Type = Test | Solve deriving (Eq, Show)
 
@@ -35,6 +36,8 @@ commands =
   , ((Solve, 8), Day8.solve)
   , ((Test, 9), Day9.test)
   , ((Solve, 9), Day9.solve)
+  , ((Test, 10), Day10.test)
+  , ((Solve, 10), Day10.solve)
   ]
 
 main :: IO ()
