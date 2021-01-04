@@ -21,6 +21,7 @@ import qualified Day15
 import qualified Day16
 import qualified Day17
 import qualified Day18
+import qualified Day19
 
 data Type = Test | Solve deriving (Eq, Show)
 
@@ -62,12 +63,14 @@ commands =
   , ((Solve, 17), Day17.solve)
   , ((Test, 18), Day18.test)
   , ((Solve, 18), Day18.solve)
+  , ((Test, 19), Day19.test)
+  , ((Solve, 19), Day19.solve)
   ]
 
 main :: IO ()
 main = do
   args <- getArgs
   let args' = if head args == "-t"
-              then (Test, (read $ args !! 1))
-              else (Solve, (read $ head args))
+              then (Test, read (args !! 1))
+              else (Solve, read (head args))
   fromJust $ lookup args' commands
