@@ -36,6 +36,9 @@ dependencies:
 
 library:
   source-dirs: src
+  ghc-options:
+  - -Wall
+  - -Wno-name-shadowing
 
 executables:
   advent-of-code-y2020-exe:
